@@ -13,7 +13,6 @@ function App() {
   const [isLoading, setLoading] = useState(false);
 
   const handleClick = async (event) => {
-
     setLoading(true);
 
     // Check for network connection
@@ -27,11 +26,7 @@ function App() {
     }
 
     try {
-      const { error } = await redirectToCheckout(stripe);
-      if (error) {
-        SetErrorMsg(error.message);
-      }
-
+      await redirectToCheckout(stripe);
     } catch (error) {
       SetErrorMsg("We are experiencing connection issues. Please try again later.");
     };
